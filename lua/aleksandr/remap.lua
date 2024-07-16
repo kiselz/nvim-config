@@ -10,6 +10,5 @@ vim.keymap.set("n", "“", "2<C-w><")
 vim.keymap.set("n", "˚", ":m -2<Return>")  
 -- move current line down (ALT + J) 
 vim.keymap.set("n", "∆", ":m +1<Return>")  
-
--- exit from insert mode by pressing q
-vim.keymap.set("i", "q", "<Esc>")
+-- exit from insert mode by pressing jk
+vim.keymap.set("i", "jk", "<Esc>")
