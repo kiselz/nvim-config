@@ -41,6 +41,7 @@ require("lazy").setup({
 	"SmiteshP/nvim-navic",
 	"windwp/nvim-ts-autotag",
 	"Mofiqul/dracula.nvim",
+	{ "rose-pine/neovim", name = "rose-pine" },
 	"christoomey/vim-tmux-navigator",
 	"terrortylor/nvim-comment",
 	-- "JoosepAlviste/nvim-ts-context-commentstring",

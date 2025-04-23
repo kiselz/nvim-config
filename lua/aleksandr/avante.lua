@@ -10,7 +10,7 @@ local config = {
 			__inherited_from = 'openai',
 			api_key_name = '',
 			endpoint = 'http://localhost:1337/v1',
-			model = 'gpt-4o-mini',
+			model = 'deepseek-chat',
 		}
 	},
 	file_selector = {

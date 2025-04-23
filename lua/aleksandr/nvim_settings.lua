@@ -68,5 +68,5 @@ vim.keymap.set("i", "<M-d>", "<C-w>")
 vim.keymap.set("n", "te", ":tabedit<Return>")
 vim.keymap.set("n", "tc", ":tabclose<Return>")
 -- this binding triggers also <C-i> binding for no conrete reason 
--- vim.keymap.set("n", "<tab>", ":tabnext<Return>")
-vim.keymap.set("n", "<s-tab>", ":tabprev<Return>")
+vim.keymap.set("n", "<leader><tab>", ":tabnext<Return>")
+vim.keymap.set("n", "<leader><s-tab>", ":tabprev<Return>")
