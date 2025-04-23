@@ -69,14 +69,27 @@ require("lazy").setup({
 	},
 	'folke/zen-mode.nvim',
 	'ray-x/lsp_signature.nvim',
+	'lewis6991/gitsigns.nvim',
+	"supermaven-inc/supermaven-nvim",
+	{
+		"mikavilpas/yazi.nvim",
+		dependencies = {
+			-- check the installation instructions at
+			-- https://github.com/folke/snacks.nvim
+			"folke/snacks.nvim"
+		},
+	},
+	"neoclide/coc.nvim",
+	{
+		'nvim-lualine/lualine.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
 	-- lsp stuff below
 	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
 	'neovim/nvim-lspconfig',
 	'hrsh7th/cmp-nvim-lsp',
 	'hrsh7th/nvim-cmp',
 	'L3MON4D3/LuaSnip',
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
 	-- avante stuff below
 	{
 	  "yetone/avante.nvim",
