@@ -1,38 +1,24 @@
 local lsp_zero = require('lsp-zero')
 local builtin = require('telescope.builtin')
 local lspconfig = require('lspconfig')
-local mason = require('mason')
-local mason_lspconfig = require('mason-lspconfig')
 local navic = require('nvim-navic')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local cwd = vim.fn.getcwd()
 
-
-lsp_zero.on_attach(function(client, bufnr)
-  -- see :help lsp-zero-keybindings
-  -- to learn the available actions
-  lsp_zero.default_keymaps({buffer = bufnr})
-end)
+-- Reserve a space in the gutter
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'
 
 
--- here you can setup the language servers
-mason.setup({})
-mason_lspconfig.setup({
-  ensure_installed = {
-	  'pyright', 'clangd', 'html', 'tsserver', 'eslint',
-	  'gopls', 'cssls', 'css_variables', 'templ', 'jsonls'
-  },
+-- Add cmp_nvim_lsp capabilities settings to lspconfig
+-- This should be executed before you configure any language server
+local lspconfig_defaults = lspconfig.util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lspconfig_defaults.capabilities,
+  cmp_nvim_lsp.default_capabilities()
+)
 
-})
-
-mason_lspconfig.setup_handlers({
-	function (server_name)
-		lspconfig[server_name].setup {
-			on_attach = function(client, bufnr)
-				navic.attach(client, bufnr)
-			end
-		}
-	end
-})
 
 vim.api.nvim_create_autocmd('LspAttach', {
 	desc = 'LSP Actions',
@@ -50,6 +36,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		end, opts)
 		vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, opts)
+		vim.keymap.set('n', '<leader>cd', vim.diagnostic.show, opts)
 		vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, opts)
 		vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
 		vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
@@ -63,6 +50,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		}, bufnr)
 	end
 })
+
+-- enabling lsp servers
+vim.lsp.enable('pyright')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('gopls')
+vim.lsp.enable('emmet_language_server')
+
 
 -- toggle lsp signature when typing
 vim.keymap.set({ 'n' }, '<Leader>k', function()

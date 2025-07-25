@@ -4,13 +4,16 @@ local Utils = require('avante.utils')
 
 
 local config = {
-	provider = 'gpt4free',
+	provider = 'claude',
+	claude = {
+		model = 'claude-opus-4-20250514'
+	},
 	vendors = {
 		gpt4free = {
 			__inherited_from = 'openai',
 			api_key_name = '',
 			endpoint = 'http://localhost:1337/v1',
-			model = 'deepseek-chat',
+			model = 'deepseek-v3',
 		}
 	},
 	file_selector = {

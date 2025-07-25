@@ -3,36 +3,38 @@ vim.opt.tabstop=4
 vim.opt.shiftwidth=4
 
 -- enable line numbering
-vim.wo.number = true
+-- vim.wo.number = true
+
+-- enable relative line numbering
+vim.cmd("set number relativenumber")
 
 vim.g.mapleader = " "
 -- navic status line
 vim.o.statusline = "%f %{%v:lua.require'nvim-navic'.get_location()%}"
+
 -- enable true colors
 vim.opt.termguicolors = true
 
 -- vim.keymap.set("n", "<Leader>n", "<Nop>", { silent = true, remap = false })
 -- vim.keymap.set("n", "<Leader>nb", "<Nop>", { silent = true, remap = false })
-vim.keymap.set("n", "<Space>nb", ":Navbuddy<Return>", {desc = "Show nav buddy menu"})
+vim.keymap.set("n", "<leader>nb", ":Navbuddy<Return>", {desc = "Show nav buddy menu"})
 
 
 -- remove highlighting
-vim.keymap.set("n", "<Space>h", ":noh<Return>", {desc = "Remove Highlighting"})
+vim.keymap.set("n", "<leader>h", ":noh<Return>", {desc = "Remove Highlighting"})
+
+-- exit from terminal mode by pressing esc
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", {desc = "Exit terminal mode"})
 
 -- resizing window
+vim.keymap.set("n", "<Up>", "<Cmd>resize +2<CR>", { desc = "Increase window height" })
+vim.keymap.set("n", "<Down>", "<Cmd>resize -2<CR>", { desc = "Decrease window height" })
+vim.keymap.set("n", "<Left>", "<Cmd>vertical resize -2<CR>", { desc = "Increase window width" })
+vim.keymap.set("n", "<Right>", "<Cmd>vertical resize +2<CR>", { desc = "Decrease window width" })
 
--- increase current buffer's width (ALT + ])
-vim.keymap.set("n", "‘", "2<C-w>>")
-vim.keymap.set("n", "<M-]>", "2<C-w>>")
--- redude current buffer's width (ALT + [)
-vim.keymap.set("n", "“", "2<C-w><") 
-vim.keymap.set("n", "<M-[>", "2<C-w><") 
--- increase current buffer's height (ALT + =)
-vim.keymap.set("n", "≠", "<C-w>+")
-vim.keymap.set("n", "<M-=>", "<C-w>+")
--- redude current buffer's height (ALT + -)
-vim.keymap.set("n", "–", "<C-w>-") 
-vim.keymap.set("n", "<M-->", "<C-w>-") 
+-- splits
+vim.keymap.set("n", "<leader>_", "<C-w>s", { desc = "Split below" })
+vim.keymap.set("n", "<leader>|", "<C-w>v", { desc = "Split right" })
 
 
 -- move current line (or current selection) up (ALT + K) 
@@ -70,3 +72,9 @@ vim.keymap.set("n", "tc", ":tabclose<Return>")
 -- this binding triggers also <C-i> binding for no conrete reason 
 vim.keymap.set("n", "<leader><tab>", ":tabnext<Return>")
 vim.keymap.set("n", "<leader><s-tab>", ":tabprev<Return>")
+
+-- move tabs
+vim.keymap.set("n", "<leader><Left>", ":-tabm<Return>")  -- move to the left
+vim.keymap.set("n", "<leader><Right>", ":+tabm<Return>") -- move to the right
+vim.keymap.set("n", "<leader>0", ":0tabm<Return>")       -- move to the first tab
+
