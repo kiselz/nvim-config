@@ -28,6 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		local bufnr = args.buf
 
 		vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc="Go to defintion" })
+		vim.keymap.set('n', 'gD', "<cmd>tab split | lua vim.lsp.buf.definition()<CR>", { desc="Go to defintion in a new tab" })
 		vim.keymap.set('n', 'gr', builtin.lsp_references, { desc="Open a telescope window with references"} )
 
 		vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder)

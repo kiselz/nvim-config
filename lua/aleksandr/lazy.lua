@@ -79,11 +79,8 @@ require("lazy").setup({
 			"folke/snacks.nvim"
 		},
 	},
-	"neoclide/coc.nvim",
-	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' }
-	},
+	"github/copilot.vim",
+	"nvim-lualine/lualine.nvim",
 	-- lsp stuff below
 	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
 	'neovim/nvim-lspconfig',
